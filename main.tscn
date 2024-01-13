@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://d17oy4q27kuku"]
+
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_qu63m"]
+[ext_resource type="PackedScene" uid="uid://dq4oqp58rqb5n" path="res://tile.tscn" id="2_t18ra"]
+[ext_resource type="PackedScene" uid="uid://dhw45dswsem00" path="res://camera_control.tscn" id="3_fd41k"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_qu63m")
+tile_scene = ExtResource("2_t18ra")
+
+[node name="CameraControl" parent="." instance=ExtResource("3_fd41k")]

@@ -1,0 +1,7 @@
+Camera2D
+CollisionShape2D
+Area2D
+CanvasModulate
+Sprite2D
+CollisionPolygon2D
+Node

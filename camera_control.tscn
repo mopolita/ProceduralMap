@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhw45dswsem00"]
+
+[ext_resource type="Script" path="res://scripts/CameraControl.gd" id="1_bo4ih"]
+
+[node name="CameraControl" type="Node2D"]
+script = ExtResource("1_bo4ih")
+metadata/_edit_group_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(7500, 4750)
+zoom = Vector2(0.09, 0.09)
+limit_left = -100000
+limit_top = -100000
+limit_right = 100000
+limit_bottom = 100000
