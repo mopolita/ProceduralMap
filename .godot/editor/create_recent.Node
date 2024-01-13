@@ -1,9 +1,0 @@
-CanvasLayer
-CollisionShape2D
-Area2D
-Button
-Camera2D
-CanvasModulate
-Sprite2D
-CollisionPolygon2D
-Node
