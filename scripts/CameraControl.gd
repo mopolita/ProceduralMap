@@ -1,11 +1,8 @@
 extends Node2D
 
-var camera : Camera2D
-var move_speed = 2000.0
+@export var camera : Camera2D
 var zoom_speed = 0.01
-
-func _ready():
-	camera = $Camera2D
+var move_speed = 2000.0
 
 func _process(delta):
 	var movement = Vector2.ZERO

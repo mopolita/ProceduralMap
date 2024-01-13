@@ -21,8 +21,8 @@ func set_height():
 		elevation = Enums.TerrainElevation.MOUNTAIN
 
 func set_type():
-	if (height<0):
-		if (average_temperature <= -15):
+	if (height <= 25):
+		if (average_temperature <= -10 and height < 0):
 			type = Enums.TerrainTypes.ICE
 		else:
 			match elevation:
@@ -30,8 +30,10 @@ func set_type():
 					type = Enums.TerrainTypes.DEEP_OCEAN
 				Enums.TerrainElevation.CLOSE_OCEAN:
 					type = Enums.TerrainTypes.CLOSE_OCEAN
-				_:
+				Enums.TerrainElevation.SHALLOW_WATER:
 					type = Enums.TerrainTypes.SHALLOW_WATER
+				_:
+					type = Enums.TerrainTypes.BEACH
 	else:
 		if (average_temperature <= -5):
 			if (average_precipitation <= 50):
@@ -83,5 +85,7 @@ func  recolor():
 			modulate = Color("4490db")
 		Enums.TerrainTypes.ICE:
 			modulate = Color("77b5ba")
+		Enums.TerrainTypes.BEACH:
+			modulate = Color("c4b068")
 		_:
 			modulate = Color("000000")

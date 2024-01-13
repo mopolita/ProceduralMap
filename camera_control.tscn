@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/CameraControl.gd" id="1_bo4ih"]
 
-[node name="CameraControl" type="Node2D"]
+[node name="CameraControl" type="Node2D" node_paths=PackedStringArray("camera")]
 script = ExtResource("1_bo4ih")
+camera = NodePath("Camera2D")
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
