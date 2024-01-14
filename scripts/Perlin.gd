@@ -6,8 +6,8 @@ func generate_terrain(grid, grid_size):
 	var precipitation = FastNoiseLite.new()
 	
 	set_noise(height, 0.01)
-	set_noise(temperature, 0.04)
-	set_noise(precipitation, 0.03)
+	set_noise(temperature, 0.035)
+	set_noise(precipitation, 0.025)
 	
 	for row in range(grid_size.y):
 		for col in range(grid_size.x):
