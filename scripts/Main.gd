@@ -9,6 +9,7 @@ var tile_grid
 func _ready():
 	tile_grid = generate_tile_grid()
 	Perlin.generate_terrain(tile_grid, grid_size)
+#	normalize_water_temperature(tile_grid)
 
 func generate_tile_grid():
 	var col_array = []
@@ -26,7 +27,6 @@ func hex_to_pixel(hex_pos):
 	var x = hexagon_size.x * sqrt(3.0) * (hex_pos.x + 0.5 * (hex_pos.y % 2))
 	var y = 1.5 * hexagon_size.y * hex_pos.y
 	return Vector2(x,y)
-
 
 func _on_reload_button_pressed():
 	Perlin.generate_terrain(tile_grid, grid_size)

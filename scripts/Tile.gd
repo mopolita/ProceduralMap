@@ -4,7 +4,7 @@ extends Area2D
 @export var hills: Texture2D
 @export var mountains: Texture2D
 
-var type: Enums.TerrainTypes
+var type: Enums.OverworldTerrainTypes
 var elevation: Enums.TerrainElevation
 var average_temperature : float
 var average_precipitation
@@ -27,71 +27,71 @@ func set_height():
 		mountains.draw(canvas, Vector2.ZERO)
 
 func set_type():
-	if (height <= 25):
+	if (height <= 30):
 		if (average_temperature <= -10 and height < 0):
-			type = Enums.TerrainTypes.ICE
+			type = Enums.OverworldTerrainTypes.ICE
 		else:
 			match elevation:
 				Enums.TerrainElevation.DEEP_OCEAN:
-					type = Enums.TerrainTypes.DEEP_OCEAN
+					type = Enums.OverworldTerrainTypes.DEEP_OCEAN
 				Enums.TerrainElevation.CLOSE_OCEAN:
-					type = Enums.TerrainTypes.CLOSE_OCEAN
+					type = Enums.OverworldTerrainTypes.CLOSE_OCEAN
 				Enums.TerrainElevation.SHALLOW_WATER:
-					type = Enums.TerrainTypes.SHALLOW_WATER
+					type = Enums.OverworldTerrainTypes.SHALLOW_WATER
 				_:
-					type = Enums.TerrainTypes.BEACH
+					type = Enums.OverworldTerrainTypes.BEACH
 	else:
 		if (average_temperature <= -5):
 			if (average_precipitation <= 50):
-				type = Enums.TerrainTypes.TUNDRA
+				type = Enums.OverworldTerrainTypes.TUNDRA
 			elif (average_precipitation > 50 and average_precipitation <= 175):
-				type = Enums.TerrainTypes.BOREAL_FOREST
+				type = Enums.OverworldTerrainTypes.BOREAL_FOREST
 			else:
-				type = Enums.TerrainTypes.SNOWPLAINS
+				type = Enums.OverworldTerrainTypes.SNOWPLAINS
 		elif (average_temperature > -5 and average_temperature <= 20):
 			if (average_precipitation <= 100):
-				type = Enums.TerrainTypes.PRAIRIE
+				type = Enums.OverworldTerrainTypes.PRAIRIE
 			elif (average_precipitation > 100 and average_precipitation <= 150):
-				type = Enums.TerrainTypes.TEMPERATE_FOREST
+				type = Enums.OverworldTerrainTypes.TEMPERATE_FOREST
 			else:
-				type = Enums.TerrainTypes.SWAMP
+				type = Enums.OverworldTerrainTypes.SWAMP
 		else:
 			if (average_precipitation <= 75):
-				type = Enums.TerrainTypes.DESERT
+				type = Enums.OverworldTerrainTypes.DESERT
 			elif (average_precipitation > 75 and average_precipitation <= 150):
-				type = Enums.TerrainTypes.SAVANNAH
+				type = Enums.OverworldTerrainTypes.SAVANNAH
 			else:
-				type = Enums.TerrainTypes.TROPICAL_RAINFOREST
+				type = Enums.OverworldTerrainTypes.TROPICAL_RAINFOREST
 
 func  recolor():
 	match type:
-		Enums.TerrainTypes.TUNDRA:
+		Enums.OverworldTerrainTypes.TUNDRA:
 			modulate = Color("c7714a")
-		Enums.TerrainTypes.BOREAL_FOREST:
+		Enums.OverworldTerrainTypes.BOREAL_FOREST:
 			modulate = Color("04572f")
-		Enums.TerrainTypes.SNOWPLAINS:
+		Enums.OverworldTerrainTypes.SNOWPLAINS:
 			modulate = Color("d4d4d4")
-		Enums.TerrainTypes.PRAIRIE:
+		Enums.OverworldTerrainTypes.PRAIRIE:
 			modulate = Color("66bf2a")
-		Enums.TerrainTypes.TEMPERATE_FOREST:
+		Enums.OverworldTerrainTypes.TEMPERATE_FOREST:
 			modulate = Color("117811")
-		Enums.TerrainTypes.SWAMP:
+		Enums.OverworldTerrainTypes.SWAMP:
 			modulate = Color("1d420b")
-		Enums.TerrainTypes.DESERT:
+		Enums.OverworldTerrainTypes.DESERT:
 			modulate = Color("a38524")
-		Enums.TerrainTypes.SAVANNAH:
+		Enums.OverworldTerrainTypes.SAVANNAH:
 			modulate = Color("9c9e05")
-		Enums.TerrainTypes.TROPICAL_RAINFOREST:
+		Enums.OverworldTerrainTypes.TROPICAL_RAINFOREST:
 			modulate = Color("065c03")
-		Enums.TerrainTypes.DEEP_OCEAN:
+		Enums.OverworldTerrainTypes.DEEP_OCEAN:
 			modulate = Color("1d1db3")
-		Enums.TerrainTypes.CLOSE_OCEAN:
+		Enums.OverworldTerrainTypes.CLOSE_OCEAN:
 			modulate = Color("2a4da3")
-		Enums.TerrainTypes.SHALLOW_WATER:
+		Enums.OverworldTerrainTypes.SHALLOW_WATER:
 			modulate = Color("4490db")
-		Enums.TerrainTypes.ICE:
+		Enums.OverworldTerrainTypes.ICE:
 			modulate = Color("77b5ba")
-		Enums.TerrainTypes.BEACH:
+		Enums.OverworldTerrainTypes.BEACH:
 			modulate = Color("c4b068")
 		_:
 			modulate = Color("000000")

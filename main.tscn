@@ -13,9 +13,9 @@ tile_scene = ExtResource("2_t18ra")
 
 [node name="Ui" type="CanvasLayer" parent="."]
 
-[node name="ReloadButton2" type="Button" parent="Ui"]
+[node name="ReloadButton" type="Button" parent="Ui"]
 offset_right = 8.0
 offset_bottom = 8.0
 icon = ExtResource("4_tvj68")
 
-[connection signal="pressed" from="Ui/ReloadButton2" to="." method="_on_reload_button_pressed"]
+[connection signal="pressed" from="Ui/ReloadButton" to="." method="_on_reload_button_pressed"]

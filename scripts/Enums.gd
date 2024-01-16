@@ -1,6 +1,6 @@
 extends Node
 
-enum TerrainTypes { 
+enum OverworldTerrainTypes { 
 	TUNDRA,
 	BOREAL_FOREST,
 	SNOWPLAINS,
