@@ -39,8 +39,8 @@ func temperature_modifier(x, height):
 	return sin((x / height) * 2 * PI - PI/2) * 15
 
 func scale_precipitation(p):
-	var prec = ((p + 1) / 2) * 450 - 100
+	var prec = ((p + 1) / 2) * 400 - 100
 	return prec if prec >= 0 else 0
 
 func scale_height(h):
-	return ((h + 1) / 2) * 7750 - 3750
+	return ((h + 1) / 2) * 8500 - 4000

@@ -11,15 +11,15 @@ var average_precipitation
 var height
 
 func set_height():
-	if (height <= -750):
+	if (height <= -700):
 		elevation = Enums.TerrainElevation.DEEP_OCEAN
-	elif (height > -750 and height <= -250):
+	elif (height > -700 and height <= -200):
 		elevation = Enums.TerrainElevation.CLOSE_OCEAN
-	elif (height > -250 and height <= 0):
+	elif (height > -200 and height <= 0):
 		elevation = Enums.TerrainElevation.SHALLOW_WATER
-	elif (height > 0 and height <= 500):
+	elif (height > 0 and height <= 400):
 		elevation = Enums.TerrainElevation.PLAIN
-	elif (height > 500 and height <= 1000):
+	elif (height > 400 and height <= 800):
 		elevation = Enums.TerrainElevation.HILL
 		hills.draw(canvas, Vector2.ZERO)
 	elif (height > 1000):
@@ -27,7 +27,7 @@ func set_height():
 		mountains.draw(canvas, Vector2.ZERO)
 
 func set_type():
-	if (height <= 30):
+	if (height <= 20):
 		if (average_temperature <= -10 and height < 0):
 			type = Enums.OverworldTerrainTypes.ICE
 		else:
