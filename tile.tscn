@@ -1,25 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq4oqp58rqb5n"]
+[gd_scene load_steps=3 format=3 uid="uid://dq4oqp58rqb5n"]
 
 [ext_resource type="Script" path="res://scripts/Tile.gd" id="1_rqux0"]
-[ext_resource type="Texture2D" uid="uid://ceabq8plngxrq" path="res://images/hills.png" id="2_b7b5y"]
 [ext_resource type="Texture2D" uid="uid://b2vsdn1srvq3p" path="res://images/Hexagon_no_borders.png" id="2_o2dyj"]
-[ext_resource type="Texture2D" uid="uid://4qs15k4shmgu" path="res://images/mountain.png" id="3_my8pq"]
 
-[node name="Tile" type="Area2D" node_paths=PackedStringArray("canvas")]
+[node name="Tile" type="Area2D"]
 scale = Vector2(0.1, 0.1)
 script = ExtResource("1_rqux0")
-canvas = NodePath("HeightLayer")
-hills = ExtResource("2_b7b5y")
-mountains = ExtResource("3_my8pq")
 metadata/_edit_group_ = true
-
-[node name="HeightLayer" type="CanvasLayer" parent="."]
-layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(4.99999, -74.9997)
 scale = Vector2(9.97596, 11.8125)
 polygon = PackedVector2Array(-0.501204, -19.0477, 25.5614, -6.34924, 25.5614, 19.0476, -0.501204, 31.746, -26.5639, 19.0476, -26.5639, -6.34924)
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_o2dyj")

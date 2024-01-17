@@ -9,7 +9,6 @@ var tile_grid
 func _ready():
 	tile_grid = generate_tile_grid()
 	Perlin.generate_terrain(tile_grid, grid_size)
-#	normalize_water_temperature(tile_grid)
 
 func generate_tile_grid():
 	var col_array = []

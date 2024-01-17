@@ -1,9 +1,5 @@
 extends Area2D
 
-@export var canvas: CanvasLayer
-@export var hills: Texture2D
-@export var mountains: Texture2D
-
 var type: Enums.OverworldTerrainTypes
 var elevation: Enums.TerrainElevation
 var average_temperature : float
@@ -21,10 +17,8 @@ func set_height():
 		elevation = Enums.TerrainElevation.PLAIN
 	elif (height > 400 and height <= 800):
 		elevation = Enums.TerrainElevation.HILL
-		hills.draw(canvas, Vector2.ZERO)
-	elif (height > 1000):
+	else:
 		elevation = Enums.TerrainElevation.MOUNTAIN
-		mountains.draw(canvas, Vector2.ZERO)
 
 func set_type():
 	if (height <= 20):
