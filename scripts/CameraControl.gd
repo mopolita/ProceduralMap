@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var camera : Camera2D
-var zoom_speed = 0.02
+var zoom_speed = 0.01
 var move_speed = 2000.0
 
 func _process(delta):

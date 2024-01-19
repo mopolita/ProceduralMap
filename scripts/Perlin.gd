@@ -1,26 +1,22 @@
 extends Node
 
-func generate_terrain(grid, grid_size):
-	var height = FastNoiseLite.new()
-	var temperature = FastNoiseLite.new()
-	var precipitation = FastNoiseLite.new()
-	
-	set_noise(height, 0.01)
+var temperature = FastNoiseLite.new()
+var precipitation = FastNoiseLite.new()
+var height_noise = FastNoiseLite.new()
+
+func generate_tile(x, y, height):
+	return [scale_temperature(temperature.get_noise_2d(x, y)) + temperature_modifier(y, height), 
+			scale_precipitation(precipitation.get_noise_2d(x, y)), 
+			scale_height(height_noise.get_noise_2d(x, y))]
+
+func setup():
+	set_noise(height_noise, 0.01)
 	set_noise(temperature, 0.035)
 	set_noise(precipitation, 0.025)
-	
-	set_fractal(precipitation, FastNoiseLite.FRACTAL_FBM, 3, 0.3)
-	set_fractal(temperature, FastNoiseLite.FRACTAL_FBM, 3, 0.2)
-	set_fractal(height, FastNoiseLite.FRACTAL_FBM, 5, 0.15)
 
-	for row in range(grid_size.y):
-		for col in range(grid_size.x):
-			grid[row][col].average_temperature = scale_temperature(temperature.get_noise_2d(row, col)) + temperature_modifier(row, grid_size.y)
-			grid[row][col].average_precipitation = scale_precipitation(precipitation.get_noise_2d(row, col))
-			grid[row][col].height = scale_height(height.get_noise_2d(row, col))
-			grid[row][col].set_height()
-			grid[row][col].set_type()
-			grid[row][col].recolor()
+	set_fractal(precipitation, FastNoiseLite.FRACTAL_FBM, 4, 0.3)
+	set_fractal(temperature, FastNoiseLite.FRACTAL_FBM, 4, 0.2)
+	set_fractal(height_noise, FastNoiseLite.FRACTAL_FBM, 10, 0.15)
 
 func set_noise(noise, frequency):
 	noise.set_noise_type(FastNoiseLite.TYPE_PERLIN)

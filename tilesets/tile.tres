@@ -1,0 +1,30 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bkuv01bsdpfgn"]
+
+[ext_resource type="Texture2D" uid="uid://4dyldvm4spwo" path="res://images/overworld_tileset.png" id="1_7skn7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_00uc0"]
+resource_name = "Overworld"
+texture = ExtResource("1_7skn7")
+margins = Vector2i(10, 10)
+separation = Vector2i(10, 10)
+texture_region_size = Vector2i(52, 60)
+1:0/0 = 0
+2:0/0 = 0
+5:0/0 = 0
+6:0/next_alternative_id = 4
+6:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:0/0 = 0
+
+[resource]
+tile_shape = 3
+tile_size = Vector2i(52, 60)
+sources/1 = SubResource("TileSetAtlasSource_00uc0")
