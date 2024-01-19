@@ -22,6 +22,14 @@ enum OverworldTerrainTypes {
 	DEEP_OCEAN
 }
 
+enum UnderworldTerrainTypes {
+	SHALLOW_LAVA,
+	DEEP_LAVA,
+	CAVERN_WALL,
+	SHROOM,
+	BARREN_LAND
+}
+
 enum TerrainElevation { 
 	DEEP_OCEAN,
 	CLOSE_OCEAN,

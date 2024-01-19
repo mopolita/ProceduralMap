@@ -5,8 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://dhw45dswsem00" path="res://scenes/camera_control.tscn" id="3_fd41k"]
 [ext_resource type="Texture2D" uid="uid://ggvd587qrbls" path="res://images/reload_arrow.jpg" id="4_tvj68"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" node_paths=PackedStringArray("map")]
 script = ExtResource("1_wjfm3")
+map = NodePath("Map")
 
 [node name="Map" parent="." instance=ExtResource("1_3aj0k")]
 
@@ -16,8 +17,15 @@ visibility_layer = 0
 [node name="Ui" type="CanvasLayer" parent="."]
 
 [node name="ReloadButton" type="Button" parent="Ui"]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 128.0
+offset_bottom = 128.0
 icon = ExtResource("4_tvj68")
+
+[node name="MenuBar" type="MenuBar" parent="Ui"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PopupMenu" type="PopupMenu" parent="Ui/MenuBar"]
 
 [connection signal="pressed" from="Ui/ReloadButton" to="." method="_on_reload_button_pressed"]

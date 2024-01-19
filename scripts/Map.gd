@@ -7,21 +7,26 @@ var grid_size = Vector2(300, 200)  # Adjust the size of your grid
 var tile_grid: Array
 
 func _ready():
-	generate_map(Enums.WorldType.OVERWORLD)
+	generate_map(Enums.WorldType.UNDERWORLD)
 
 func generate_map(world_type):
-	Perlin.setup()
+	Perlin.setup(world_type)
+	tile_grid = []
 	for col in range(grid_size.y):
 		var row_array = []
 		for row in range(grid_size.x):
-			var tile_value = Perlin.generate_tile(row, col, grid_size.y)
-			tile_value.append(get_elevation(tile_value[2]))
-			tile_value.append(get_type(tile_value[0], tile_value[1], tile_value[2], tile_value[3]))
-			set_tile(row - (grid_size.x / 2), col  - (grid_size.y / 2), tile_value[4])
+			var tile_value = Perlin.generate_tile(world_type, row, col, grid_size.y)
+			if (world_type == Enums.WorldType.OVERWORLD):
+				tile_value.append(get_overworld_elevation(tile_value[2]))
+				tile_value.append(get_overworld_type(tile_value[0], tile_value[1], tile_value[2], tile_value[3]))
+				set_overworld_tile(row - (grid_size.x / 2), col  - (grid_size.y / 2), tile_value[4])
+			else:
+				tile_value.append(get_undeworld_type(tile_value[0], tile_value[1], tile_value[2]))
+				set_underworld_tile(row - (grid_size.x / 2), col  - (grid_size.y / 2), tile_value[3])
 			row_array.append(tile_value)
 		tile_grid.append(row_array)
 
-func get_elevation(height):
+func get_overworld_elevation(height):
 	var elevation
 	if (height <= -700):
 		elevation = Enums.TerrainElevation.DEEP_OCEAN
@@ -37,7 +42,7 @@ func get_elevation(height):
 		elevation = Enums.TerrainElevation.MOUNTAIN
 	return elevation
 
-func get_type(temperature, precipitation, height, elevation):
+func get_overworld_type(temperature, precipitation, height, elevation):
 	var type
 	if (height <= 0):
 		if (temperature <= -10):
@@ -77,35 +82,63 @@ func get_type(temperature, precipitation, height, elevation):
 func set_beach():
 	pass
 
-func  set_tile(x: int, y: int, type: Enums.OverworldTerrainTypes):
+func  set_overworld_tile(x: int, y: int, type: Enums.OverworldTerrainTypes):
 	match type:
 		Enums.OverworldTerrainTypes.TUNDRA:
-			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(0, 0))
+			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(0, 0))
 		Enums.OverworldTerrainTypes.BOREAL_FOREST:
-			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(0, 1))
+			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(0, 1))
 		Enums.OverworldTerrainTypes.SNOWPLAINS:
-			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(1, 0))
+			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(1, 0))
 		Enums.OverworldTerrainTypes.PRAIRIE:
-			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(1, 1))
+			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(1, 1))
 		Enums.OverworldTerrainTypes.TEMPERATE_FOREST:
-			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(2, 0))
+			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(2, 0))
 		Enums.OverworldTerrainTypes.SWAMP:
-			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(2, 1))
+			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(2, 1))
 		Enums.OverworldTerrainTypes.DESERT:
-			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(3, 0))
+			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(3, 0))
 		Enums.OverworldTerrainTypes.SAVANNAH:
-			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(3, 1))
+			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(3, 1))
 		Enums.OverworldTerrainTypes.TROPICAL_RAINFOREST:
-			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(4, 0))
+			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(4, 0))
 		Enums.OverworldTerrainTypes.BEACH:
-			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(4, 1))
+			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(4, 1))
 		Enums.OverworldTerrainTypes.ICE:
-			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(5, 0))
+			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(5, 0))
 		Enums.OverworldTerrainTypes.SHALLOW_WATER:
-			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(5, 1))
+			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(5, 1))
 		Enums.OverworldTerrainTypes.CLOSE_OCEAN:
-			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(6, 0))
+			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(6, 0))
 		Enums.OverworldTerrainTypes.DEEP_OCEAN:
-			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(6, 1))
+			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(6, 1))
 		_:
+			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(0, 0))
+
+func get_undeworld_type(cavern_layout, moisture, depht):
+	var type
+	if (cavern_layout > 0):
+		type = Enums.UnderworldTerrainTypes.CAVERN_WALL
+	elif (depht <= 0):
+		if (depht <= -25):
+			type = Enums.UnderworldTerrainTypes.DEEP_LAVA
+		else:
+			type = Enums.UnderworldTerrainTypes.SHALLOW_LAVA
+	elif (moisture >= 0):
+		type = Enums.UnderworldTerrainTypes.SHROOM
+	else:
+		type = Enums.UnderworldTerrainTypes.BARREN_LAND
+	return type
+
+func set_underworld_tile(x: int, y: int, type: Enums.UnderworldTerrainTypes):
+	match type:
+		Enums.UnderworldTerrainTypes.SHALLOW_LAVA:
 			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(0, 0))
+		Enums.UnderworldTerrainTypes.DEEP_LAVA:
+			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(1, 0))
+		Enums.UnderworldTerrainTypes.SHROOM:
+			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(0, 1))
+		Enums.UnderworldTerrainTypes.CAVERN_WALL:
+			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(2, 0))
+		Enums.UnderworldTerrainTypes.BARREN_LAND:
+			tile_map.set_cell(0, Vector2i(x, y), 1, Vector2i(1, 1))

@@ -1,39 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cupawubs5c47x"]
+[gd_scene load_steps=3 format=3 uid="uid://cupawubs5c47x"]
 
 [ext_resource type="Script" path="res://scripts/Map.gd" id="1_pv2yy"]
-[ext_resource type="Texture2D" uid="uid://4dyldvm4spwo" path="res://images/overworld_tileset.png" id="2_jeiqs"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_00uc0"]
-resource_name = "Overworld"
-texture = ExtResource("2_jeiqs")
-margins = Vector2i(10, 10)
-separation = Vector2i(10, 10)
-texture_region_size = Vector2i(52, 60)
-1:0/0 = 0
-2:0/0 = 0
-5:0/0 = 0
-6:0/next_alternative_id = 4
-6:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_dct1l"]
-tile_shape = 3
-tile_size = Vector2i(52, 60)
-sources/1 = SubResource("TileSetAtlasSource_00uc0")
+[ext_resource type="TileSet" uid="uid://da1b138wkmvrq" path="res://tilesets/map.tres" id="2_ocjql"]
 
 [node name="Map" type="Node2D" node_paths=PackedStringArray("tile_map")]
 script = ExtResource("1_pv2yy")
 tile_map = NodePath("TileMap")
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_dct1l")
+tile_set = ExtResource("2_ocjql")
 format = 2
