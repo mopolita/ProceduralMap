@@ -8,7 +8,7 @@ camera = NodePath("Camera2D")
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.09, 0.09)
+zoom = Vector2(0.05, 0.05)
 limit_left = -100000
 limit_top = -100000
 limit_right = 100000

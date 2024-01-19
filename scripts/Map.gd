@@ -3,11 +3,12 @@ extends Node2D
 @export var tile_map:  TileMap
 
 var hexagon_size = Vector2(30, 30)  # Adjust the size as needed
-var grid_size = Vector2(300, 200)  # Adjust the size of your grid
+var grid_size = Vector2(600, 400)  # Adjust the size of your grid
 var tile_grid: Array
+var world_type: Enums.WorldType
 
 func _ready():
-	generate_map(Enums.WorldType.UNDERWORLD)
+	generate_map(world_type)
 
 func generate_map(world_type):
 	Perlin.setup(world_type)
@@ -64,9 +65,9 @@ func get_overworld_type(temperature, precipitation, height, elevation):
 			else:
 				type = Enums.OverworldTerrainTypes.SNOWPLAINS
 		elif (temperature > -5 and temperature <= 20):
-			if (precipitation <= 100):
+			if (precipitation <= 90):
 				type = Enums.OverworldTerrainTypes.PRAIRIE
-			elif (precipitation > 100 and precipitation <= 150):
+			elif (precipitation > 90 and precipitation <= 150):
 				type = Enums.OverworldTerrainTypes.TEMPERATE_FOREST
 			else:
 				type = Enums.OverworldTerrainTypes.SWAMP
@@ -82,7 +83,7 @@ func get_overworld_type(temperature, precipitation, height, elevation):
 func set_beach():
 	pass
 
-func  set_overworld_tile(x: int, y: int, type: Enums.OverworldTerrainTypes):
+func set_overworld_tile(x: int, y: int, type: Enums.OverworldTerrainTypes):
 	match type:
 		Enums.OverworldTerrainTypes.TUNDRA:
 			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(0, 0))
@@ -115,15 +116,16 @@ func  set_overworld_tile(x: int, y: int, type: Enums.OverworldTerrainTypes):
 		_:
 			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(0, 0))
 
-func get_undeworld_type(cavern_layout, moisture, depht):
+func get_undeworld_type(cavern_layout, moisture, depth):
 	var type
-	if (cavern_layout > 0):
-		type = Enums.UnderworldTerrainTypes.CAVERN_WALL
-	elif (depht <= 0):
-		if (depht <= -25):
+	if (depth <= 0):
+		if (depth <= -12):
 			type = Enums.UnderworldTerrainTypes.DEEP_LAVA
 		else:
-			type = Enums.UnderworldTerrainTypes.SHALLOW_LAVA
+			type = Enums.UnderworldTerrainTypes.SHALLOW_LAVA	
+	elif (cavern_layout <= 0):
+		type = Enums.UnderworldTerrainTypes.CAVERN_WALL
+
 	elif (moisture >= 0):
 		type = Enums.UnderworldTerrainTypes.SHROOM
 	else:

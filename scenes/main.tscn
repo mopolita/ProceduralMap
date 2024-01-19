@@ -21,11 +21,16 @@ offset_right = 128.0
 offset_bottom = 128.0
 icon = ExtResource("4_tvj68")
 
-[node name="MenuBar" type="MenuBar" parent="Ui"]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PopupMenu" type="PopupMenu" parent="Ui/MenuBar"]
+[node name="WorldType" type="OptionButton" parent="Ui"]
+offset_top = 200.0
+offset_right = 136.0
+offset_bottom = 231.0
+item_count = 2
+selected = 0
+popup/item_0/text = "Overworld"
+popup/item_0/id = 0
+popup/item_1/text = "Underworld"
+popup/item_1/id = 1
 
 [connection signal="pressed" from="Ui/ReloadButton" to="." method="_on_reload_button_pressed"]
+[connection signal="item_selected" from="Ui/WorldType" to="." method="_on_world_type_item_selected"]
