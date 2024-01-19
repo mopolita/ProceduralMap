@@ -7,9 +7,9 @@ var grid_size = Vector2(300, 200)  # Adjust the size of your grid
 var tile_grid: Array
 
 func _ready():
-	generate_map()
+	generate_map(Enums.WorldType.OVERWORLD)
 
-func generate_map():
+func generate_map(world_type):
 	Perlin.setup()
 	for col in range(grid_size.y):
 		var row_array = []
@@ -20,11 +20,6 @@ func generate_map():
 			set_tile(row - (grid_size.x / 2), col  - (grid_size.y / 2), tile_value[4])
 			row_array.append(tile_value)
 		tile_grid.append(row_array)
-
-func hex_to_pixel(hex_pos):
-	var x = hexagon_size.x * sqrt(3.0) * (hex_pos.x + 0.5 * (hex_pos.y % 2))
-	var y = 1.5 * hexagon_size.y * hex_pos.y
-	return Vector2(x,y)
 
 func get_elevation(height):
 	var elevation

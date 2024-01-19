@@ -1,5 +1,10 @@
 extends Node
 
+enum WorldType {
+	OVERWORLD,
+	UNDERWORLD
+}
+
 enum OverworldTerrainTypes { 
 	TUNDRA,
 	BOREAL_FOREST,
