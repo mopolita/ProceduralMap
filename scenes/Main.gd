@@ -12,3 +12,4 @@ func _on_reload_button_pressed():
 
 func _on_world_type_item_selected(index):
 	map.world_type = index as Enums.WorldType
+	map.generate_map(map.world_type)

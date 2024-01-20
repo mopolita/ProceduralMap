@@ -2,8 +2,7 @@ extends Node2D
 
 @export var tile_map:  TileMap
 
-var hexagon_size = Vector2(30, 30)  # Adjust the size as needed
-var grid_size = Vector2(600, 400)  # Adjust the size of your grid
+var grid_size = Vector2(700, 400)  # Adjust the size of your grid
 var tile_grid: Array
 var world_type: Enums.WorldType
 
@@ -119,7 +118,7 @@ func set_overworld_tile(x: int, y: int, type: Enums.OverworldTerrainTypes):
 func get_undeworld_type(cavern_layout, moisture, depth):
 	var type
 	if (depth <= 0):
-		if (depth <= -12):
+		if (depth <= -15):
 			type = Enums.UnderworldTerrainTypes.DEEP_LAVA
 		else:
 			type = Enums.UnderworldTerrainTypes.SHALLOW_LAVA	
