@@ -25,10 +25,9 @@ icon = ExtResource("4_tvj68")
 offset_top = 200.0
 offset_right = 136.0
 offset_bottom = 231.0
-item_count = 2
 selected = 0
+item_count = 2
 popup/item_0/text = "Overworld"
-popup/item_0/id = 0
 popup/item_1/text = "Underworld"
 popup/item_1/id = 1
 
