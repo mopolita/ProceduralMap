@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d17oy4q27kuku"]
 
 [ext_resource type="PackedScene" uid="uid://cupawubs5c47x" path="res://scenes/map.tscn" id="1_3aj0k"]
-[ext_resource type="Script" path="res://scenes/Main.gd" id="1_wjfm3"]
+[ext_resource type="Script" uid="uid://dtkj25i8pds6" path="res://scenes/Main.gd" id="1_wjfm3"]
 [ext_resource type="PackedScene" uid="uid://dhw45dswsem00" path="res://scenes/camera_control.tscn" id="3_fd41k"]
 [ext_resource type="Texture2D" uid="uid://ggvd587qrbls" path="res://images/reload_arrow.jpg" id="4_tvj68"]
 
@@ -28,6 +28,7 @@ offset_bottom = 231.0
 selected = 0
 item_count = 2
 popup/item_0/text = "Overworld"
+popup/item_0/id = 0
 popup/item_1/text = "Underworld"
 popup/item_1/id = 1
 
