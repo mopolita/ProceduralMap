@@ -2,21 +2,21 @@ extends Node2D
 
 @export var tile_map:  TileMap
 
-var grid_size = Vector2(700, 400)  # Adjust the size of your grid
+var grid_size = Vector2(300, 200)
 var tile_grid: Array
 var world_type: Enums.WorldType
 
 func _ready():
 	generate_map(world_type)
 
-func generate_map(world_type):
-	Perlin.setup(world_type)
+func generate_map(type):
+	Perlin.setup(type)
 	tile_grid = []
 	for col in range(grid_size.y):
 		var row_array = []
 		for row in range(grid_size.x):
-			var tile_value = Perlin.generate_tile(world_type, row, col, grid_size.y)
-			if (world_type == Enums.WorldType.OVERWORLD):
+			var tile_value = Perlin.generate_tile(type, row, col, grid_size.y)
+			if (type == Enums.WorldType.OVERWORLD):
 				tile_value.append(get_overworld_elevation(tile_value[2]))
 				tile_value.append(get_overworld_type(tile_value[0], tile_value[1], tile_value[2], tile_value[3]))
 				set_overworld_tile(row - (grid_size.x / 2), col  - (grid_size.y / 2), tile_value[4])
